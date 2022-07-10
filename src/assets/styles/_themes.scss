@@ -1,0 +1,61 @@
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+}
+
+// TYPO
+%heading {
+  font-weight: 400;
+}
+
+.heading-1 {
+  @extend %heading;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.heading-2 {
+  @extend %heading;
+  font-size: 4rem;
+  font-style: italic;
+  line-height: 1;
+
+  &--light {
+    color: var(--gray-2);
+  }
+  &--dark {
+    color: var(--gray-1);
+  }
+}
+
+.heading-3 {
+  @extend %heading;
+  font-size: 1.6rem;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.heading-4 {
+  @extend %heading;
+  font-size: 1.9rem;
+
+  &--light {
+    color: var(--gray-2);
+  }
+  &--dark {
+    color: var(--gray-1);
+  }
+}

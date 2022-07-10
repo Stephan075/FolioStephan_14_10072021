@@ -1,7 +1,23 @@
-import React from "react";
+import styles from "./Header.module.scss";
+import HRnetLogo from "../../assets/images/HRnet_Logo.jpg";
 
 const Header = () => {
-  return <div className="b1">Header</div>;
+  return (
+    <header
+      className={`${styles.header} d-flex flex-row 
+  align-items-center`}
+    >
+      <div className="flex-fill">
+        <div className={`${styles.logo}`}>HRnet</div>
+      </div>
+      <ul>
+        <button className="btn btn-primary">
+          <i className="fa-solid fa-users mr-5"></i>
+          <span>Voir les employés actuels</span>
+        </button>
+      </ul>
+    </header>
+  );
 };
 
 export default Header;
