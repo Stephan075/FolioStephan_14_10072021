@@ -6,7 +6,7 @@ const FormInput = ({ type, name, placeholder, required, onChange, value }) => {
       className="inputForm"
       type={type}
       name={name}
-      required={false}
+      required={required}
       placeholder={placeholder}
       value={value}
       onChange={onChange}

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Home.module.scss";
-import Content from "../../components/Content/Content";
 import CreateEmployee from "../../components/CreateEmployee/CreateEmployee";
 
 const Home = () => {

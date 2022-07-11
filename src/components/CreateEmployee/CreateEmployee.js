@@ -48,7 +48,6 @@ const CreateEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName.length);
   };
   return (
     <>
