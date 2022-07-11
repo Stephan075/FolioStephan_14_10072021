@@ -1,17 +1,17 @@
 import styles from "./Header.module.scss";
-import HRnetLogo from "../../assets/images/HRnet_Logo.jpg";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <header
       className={`${styles.header} d-flex flex-row 
   align-items-center`}
     >
       <div className="flex-fill">
-        <div className={`${styles.logo}`}>HRnet</div>
+        <Link className="" to="/">
+          <div className={`${styles.logo}`}>HRnet</div>
+        </Link>
       </div>
       <ul>
         {location.pathname === "/employeeList" ? (

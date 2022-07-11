@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import FormInput from "../Form/FormInput/FormInput";
 import FormSelect from "../Form/FormSelect/FormSelect";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import fr from "date-fns/locale/fr";
 
 const CreateEmployee = () => {
   const firstNameRef = useRef();
@@ -31,8 +34,8 @@ const CreateEmployee = () => {
   } = formData;
 
   useEffect(() => {
-    console.log(department);
-  }, [department]);
+    // console.log("dateOfBirth", dateOfBirth);
+  }, [dateOfBirth]);
 
   // focus l'input FirstName
   //   useEffect(() => {
@@ -48,84 +51,130 @@ const CreateEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setFormData({
+      ...formData,
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "",
+      startDate: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      department: "",
+    });
   };
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="input-wrapper">
-          <label htmlFor="firstName">First Name</label>
-          <FormInput
-            type="text"
-            name="firstName"
-            placeholder="FirstName"
-            required={false}
-            onChange={onChange}
-            value={firstName}
-          />
-        </div>
+        <fieldset>
+          <legend className="heading-4">Identity informations</legend>
+          <div className="input-wrapper">
+            <label htmlFor="firstName">First Name</label>
+            <FormInput
+              type="text"
+              name="firstName"
+              placeholder="FirstName"
+              required={false}
+              onChange={onChange}
+              value={firstName}
+            />
+          </div>
 
-        <div className="input-wrapper">
-          <label htmlFor="firstName">Last Name</label>
-          <FormInput
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            required={false}
-            onChange={onChange}
-            value={lastName}
-          />
-        </div>
+          <div className="input-wrapper">
+            <label htmlFor="lastName">Last Name</label>
+            <FormInput
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              required={false}
+              onChange={onChange}
+              value={lastName}
+            />
+          </div>
 
-        <div className="input-wrapper">
-          <div className="address-infos">
-            <p className="heading-4">Address</p>
-            <div className="block">
-              <label htmlFor="firstName">Street</label>
-              <FormInput
-                type="text"
-                name="street"
-                placeholder="Street"
-                required={false}
-                onChange={onChange}
-                value={street}
-              />
-            </div>
+          <div className="input-wrapper">
+            <label htmlFor="dateOfBirth">Date of Birth</label>
+            <DatePicker
+              dateFormat="dd/MM/yyyy"
+              selected={dateOfBirth}
+              placeholderText="Date of Birth"
+              className="dateOfBirth"
+              value={dateOfBirth}
+              onChange={(date) => {
+                setFormData({ ...formData, dateOfBirth: date });
+              }}
+            />
+          </div>
 
-            <div className="block">
-              <label htmlFor="firstName">City</label>
-              <FormInput
-                type="text"
-                name="city"
-                placeholder="City"
-                required={false}
-                onChange={onChange}
-                value={city}
-              />
-            </div>
+          <div className="input-wrapper">
+            <label htmlFor="startDate">Start Date</label>
+            <DatePicker
+              dateFormat="dd/MM/yyyy"
+              selected={startDate}
+              placeholderText="Start Date"
+              className="startDate"
+              value={startDate}
+              onChange={(date) => {
+                setFormData({ ...formData, startDate: date });
+              }}
+            />
+          </div>
+        </fieldset>
 
-            <div className="block">
-              <label htmlFor="State">State</label>
-              <FormSelect
-                label="States"
-                options={states}
-                name="state"
-                onChange={onChange}
-                value={state}
-                required={false}
-              />
-            </div>
+        <fieldset>
+          <legend className="heading-4">Address</legend>
 
-            <div className="block">
-              <label htmlFor="zipCode">Zip Code</label>
-              <FormInput
-                type="number"
-                name="zipCode"
-                placeholder="Zip Code"
-                required={false}
-                onChange={onChange}
-                value={zipCode}
-              />
-            </div>
+          <div className="input-wrapper">
+            <label htmlFor="firstName">Street</label>
+            <FormInput
+              type="text"
+              name="street"
+              placeholder="Street"
+              required={false}
+              onChange={onChange}
+              value={street}
+            />
+          </div>
+
+          <div className="input-wrapper">
+            <label htmlFor="firstName">City</label>
+            <FormInput
+              type="text"
+              name="city"
+              placeholder="City"
+              required={false}
+              onChange={onChange}
+              value={city}
+            />
+          </div>
+
+          <div className="input-wrapper">
+            <label htmlFor="State">State</label>
+            <FormSelect
+              label="States"
+              options={states}
+              name="state"
+              onChange={onChange}
+              value={state}
+              required={false}
+            />
+          </div>
+
+          <div className="input-wrapper">
+            <label htmlFor="zipCode">Zip Code</label>
+            <FormInput
+              type="number"
+              name="zipCode"
+              placeholder="Zip Code"
+              required={false}
+              onChange={onChange}
+              value={zipCode}
+            />
           </div>
 
           <div className="input-wrapper">
@@ -139,8 +188,7 @@ const CreateEmployee = () => {
               required={false}
             />
           </div>
-        </div>
-
+        </fieldset>
         <button className="save-button">Save</button>
       </form>
       {/* {error && <span className="error-message">{error.message}</span>} */}
