@@ -13,7 +13,7 @@ const Header = () => {
       <ul>
         <button className="btn btn-primary">
           <i className="fa-solid fa-users mr-5"></i>
-          <span>Voir les employés actuels</span>
+          <span>View Current Employees</span>
         </button>
       </ul>
     </header>
