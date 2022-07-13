@@ -19,6 +19,11 @@ body {
   background: var(--gray-2);
 }
 
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 ul {
   list-style: none;
   padding-left: 0px;

@@ -1,13 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import FormInput from "../Form/FormInput/FormInput";
-import FormSelect from "../Form/FormSelect/FormSelect";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import fr from "date-fns/locale/fr";
+
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Fields from "./Fields";
 
 const CreateEmployee = () => {
-  const firstNameRef = useRef();
-  const [formData, setFormData] = useState({
+  const yupSchema = yup.object({
+    firstName: yup.string().required(`The Firstname field is mandatory`),
+
+    lastName: yup.string().required("The LastName field is mandatory"),
+
+    zipCode: yup.number().typeError("Please enter a number"),
+  });
+
+  const defaultValues = {
     firstName: "",
     lastName: "",
     dateOfBirth: "",
@@ -17,182 +24,40 @@ const CreateEmployee = () => {
     state: "",
     zipCode: "",
     department: "",
-  });
-
-  const [error, setError] = useState({ message: "" });
+  };
 
   const {
-    firstName,
-    lastName,
-    dateOfBirth,
-    startDate,
-    street,
-    city,
-    state,
-    zipCode,
-    department,
-  } = formData;
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitted },
+  } = useForm({
+    defaultValues,
+    resolver: yupResolver(yupSchema),
+    mode: "onSubmit",
+  });
 
-  useEffect(() => {
-    // console.log("dateOfBirth", dateOfBirth);
-  }, [dateOfBirth]);
-
-  // focus l'input FirstName
-  //   useEffect(() => {
-  //     firstNameRef.current.focus();
-  //   }, []);
-
-  const onChange = (e) => {
-    setFormData((prevForm) => ({
-      ...prevForm,
-      [e.target.name]: e.target.value,
-    }));
+  const submit = (values) => {
+    console.log(values);
+    reset(defaultValues);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setFormData({
-      ...formData,
-      firstName: "",
-      lastName: "",
-      dateOfBirth: "",
-      startDate: "",
-      street: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      department: "",
-    });
-  };
   return (
-    <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <fieldset>
-          <legend className="heading-4">Identity informations</legend>
-          <div className="input-wrapper">
-            <label htmlFor="firstName">First Name</label>
-            <FormInput
-              type="text"
-              name="firstName"
-              placeholder="FirstName"
-              required={false}
-              onChange={onChange}
-              value={firstName}
-            />
-          </div>
+    <form onSubmit={handleSubmit(submit)} className="mb-20">
+      <Fields
+        register={register}
+        errors={errors}
+        control={control}
+        states={states}
+        departments={departments}
+        defaultValues={defaultValues}
+      />
 
-          <div className="input-wrapper">
-            <label htmlFor="lastName">Last Name</label>
-            <FormInput
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required={false}
-              onChange={onChange}
-              value={lastName}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="dateOfBirth">Date of Birth</label>
-            <DatePicker
-              dateFormat="dd/MM/yyyy"
-              selected={dateOfBirth}
-              placeholderText="Date of Birth"
-              className="dateOfBirth"
-              value={dateOfBirth}
-              onChange={(date) => {
-                setFormData({ ...formData, dateOfBirth: date });
-              }}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="startDate">Start Date</label>
-            <DatePicker
-              dateFormat="dd/MM/yyyy"
-              selected={startDate}
-              placeholderText="Start Date"
-              className="startDate"
-              value={startDate}
-              onChange={(date) => {
-                setFormData({ ...formData, startDate: date });
-              }}
-            />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend className="heading-4">Address</legend>
-
-          <div className="input-wrapper">
-            <label htmlFor="firstName">Street</label>
-            <FormInput
-              type="text"
-              name="street"
-              placeholder="Street"
-              required={false}
-              onChange={onChange}
-              value={street}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="firstName">City</label>
-            <FormInput
-              type="text"
-              name="city"
-              placeholder="City"
-              required={false}
-              onChange={onChange}
-              value={city}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="State">State</label>
-            <FormSelect
-              label="States"
-              options={states}
-              name="state"
-              onChange={onChange}
-              value={state}
-              required={false}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="zipCode">Zip Code</label>
-            <FormInput
-              type="number"
-              name="zipCode"
-              placeholder="Zip Code"
-              required={false}
-              onChange={onChange}
-              value={zipCode}
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <label htmlFor="department">Department</label>
-            <FormSelect
-              label="departments"
-              options={departments}
-              name="department"
-              onChange={onChange}
-              value={department}
-              required={false}
-            />
-          </div>
-        </fieldset>
-        <button className="save-button">Save</button>
-      </form>
-      {/* {error && <span className="error-message">{error.message}</span>} */}
-    </>
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-primary">save</button>
+      </div>
+    </form>
   );
 };
 

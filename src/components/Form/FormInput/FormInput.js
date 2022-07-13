@@ -1,16 +1,26 @@
 import styles from "./FormInput.module.scss";
 
-const FormInput = ({ type, name, placeholder, required, onChange, value }) => {
+const FormInput = ({
+  register,
+  id,
+  label,
+  type = "text",
+  placeholder,
+  errors,
+}) => {
   return (
-    <input
-      className="inputForm"
-      type={type}
-      name={name}
-      required={required}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
+    <div className="form-group d-flex flex-column mb-20">
+      {/* <label className="mb-5" htmlFor={id}>
+        {label}
+      </label> */}
+      <input
+        {...register(id, {})}
+        id={id}
+        type={type}
+        placeholder={placeholder}
+      />
+      {errors && <p>{errors.message}</p>}
+    </div>
   );
 };
 

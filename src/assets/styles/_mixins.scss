@@ -1,0 +1,52 @@
+// MEDIA QUERY
+
+/* Landscape phones */
+@mixin xs {
+  @media only screen and (max-width: 576px) {
+    @content;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@mixin sm {
+  @media only screen and (min-width: 577px) and (max-width: 768px) {
+    @content;
+  }
+}
+//   sm et plus petit
+@mixin sm-lt {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@mixin md {
+  @media only screen and (min-width: 769px) and (max-width: 992px) {
+    @content;
+  }
+}
+//   lower than
+@mixin md-lt {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+/* Large desktop */
+@mixin lg {
+  @media only screen and (min-width: 993px) and (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin lg-lt {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+/* extra Large desktop */
+@mixin xl {
+  @media only screen and (min-width: 1201px) {
+    @content;
+  }
+}
