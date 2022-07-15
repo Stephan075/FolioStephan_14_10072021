@@ -4,8 +4,23 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Fields from "./Fields";
+import Modal from "../Modal/Modal";
 
 const CreateEmployee = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [dataAfterRegister, setData] = useState(false);
+
+  const openModal = (values) => {
+    const data = values;
+
+    console.log("data", data);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const yupSchema = yup.object({
     firstName: yup.string().required(`The Firstname field is mandatory`),
 
@@ -38,26 +53,41 @@ const CreateEmployee = () => {
     mode: "onSubmit",
   });
 
+  let data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
+
   const submit = (values) => {
-    console.log(values);
-    reset(defaultValues);
+    data.push(values);
+    localStorage.setItem("dataEmployee", JSON.stringify(data));
+    // console.log(values);
+    openModal(values);
+    // reset(defaultValues);
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="mb-20">
-      <Fields
-        register={register}
-        errors={errors}
-        control={control}
-        states={states}
-        departments={departments}
-        defaultValues={defaultValues}
-      />
+    <>
+      <form onSubmit={handleSubmit(submit)} className="mb-20">
+        <Fields
+          register={register}
+          errors={errors}
+          control={control}
+          states={states}
+          departments={departments}
+          defaultValues={defaultValues}
+        />
 
-      <div className="d-flex justify-content-end">
-        <button className="btn btn-primary">save</button>
-      </div>
-    </form>
+        <div className="d-flex justify-content-end">
+          <button className="btn btn-primary">save</button>
+        </div>
+      </form>
+
+      {isOpen && (
+        <Modal
+          titleTxt="Employee Created !"
+          setIsOpen={setIsOpen}
+          closeModal={closeModal}
+        />
+      )}
+    </>
   );
 };
 

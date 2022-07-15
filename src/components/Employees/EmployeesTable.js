@@ -4,22 +4,30 @@ import React, { useEffect, useState } from "react";
 
 const EmployeesTable = ({ employeesData }) => {
   const [title, setTitle] = useState(true);
+  const [usersData, setUsersData] = useState([]);
 
-  //   useEffect(() => {
-  //     const changeWidth = () => {
-  //       if (window.innerWidth < 992) {
-  //         setTitle(!title);
-  //         // setTitle(!title);
-  //       }
-  //     };
-  //     window.addEventListener("resize", changeWidth);
+  /**
+   * localStorage data
+   */
+  useEffect(() => {
+    let data = JSON.parse(localStorage.getItem("dataEmployee"));
+    const copyData = [...data];
+    const newAray = [];
 
-  //     return () => {
-  //       window.removeEventListener("resize", changeWidth);
-  //     };
-  //   }, [title]);
+    copyData.map((u) => {
+      newAray.push({
+        ...u,
+        dateOfBirth: new Date(u.dateOfBirth).toLocaleDateString(),
+        startDate: new Date(u.startDate).toLocaleDateString(),
+      });
 
-  console.log(title);
+      return u;
+    });
+
+    // console.log(aray);
+    setUsersData(newAray);
+  }, []);
+
   return (
     <table className="responsiveTable ">
       {/* <!-- Responsive Table Header Section --> */}
@@ -35,7 +43,7 @@ const EmployeesTable = ({ employeesData }) => {
 
       {/* <!-- Responsive Table Body Section --> */}
       <tbody className="responsiveTable__body">
-        {mocksUser.map((u, i) => (
+        {usersData?.map((u, i) => (
           <tr key={i} className="responsiveTable__row">
             {/* {console.log(Object.values(u))} */}
 
