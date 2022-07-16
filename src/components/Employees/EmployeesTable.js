@@ -2,7 +2,7 @@ import styles from "./EmployeesTable.module.scss";
 
 import React, { useEffect, useState } from "react";
 
-const EmployeesTable = ({ employeesData }) => {
+const EmployeesTable = ({ filter }) => {
   const [title, setTitle] = useState(true);
   const [usersData, setUsersData] = useState([]);
 
@@ -16,17 +16,40 @@ const EmployeesTable = ({ employeesData }) => {
 
     copyData.map((u) => {
       newAray.push({
-        ...u,
-        dateOfBirth: new Date(u.dateOfBirth).toLocaleDateString(),
+        firstName: u.firstName,
+        lastName: u.lastName,
         startDate: new Date(u.startDate).toLocaleDateString(),
+        department: u.department,
+        dateOfBirth: new Date(u.dateOfBirth).toLocaleDateString(),
+        street: u.street,
+        city: u.city,
+        state: u.state,
+        zipCode: u.zipCode.toString(),
       });
 
-      return u;
+      return newAray;
     });
 
-    // console.log(aray);
     setUsersData(newAray);
   }, []);
+
+  const keys = [
+    "firstName",
+    "lastName",
+    "dateOfBirth",
+    "startDate",
+    "street",
+    "city",
+    "state",
+    "zipCode",
+    "department",
+  ];
+  // console.log(usersData[0]["firstName"]);
+  const filterData = (usersData) => {
+    return usersData.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(filter))
+    );
+  };
 
   return (
     <table className="responsiveTable ">
@@ -43,7 +66,7 @@ const EmployeesTable = ({ employeesData }) => {
 
       {/* <!-- Responsive Table Body Section --> */}
       <tbody className="responsiveTable__body">
-        {usersData?.map((u, i) => (
+        {filterData(usersData).map((u, i) => (
           <tr key={i} className="responsiveTable__row">
             {/* {console.log(Object.values(u))} */}
 

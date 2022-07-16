@@ -56,6 +56,7 @@ const CreateEmployee = () => {
   let data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
 
   const submit = (values) => {
+    console.log(values);
     data.push(values);
     localStorage.setItem("dataEmployee", JSON.stringify(data));
     // console.log(values);
