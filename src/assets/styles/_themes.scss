@@ -78,7 +78,7 @@
     padding: 0 1.5rem;
     border-bottom: 1px solid #edeef2;
     // grid-template-columns: repeat(9, 1fr);
-    grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr 1.5fr 1fr 1fr 1.1fr;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr 1.2fr 1.5fr 1fr 0.5fr 1fr;
     @include mixin.md {
       grid-template-columns: 1fr 1fr 1fr;
     }

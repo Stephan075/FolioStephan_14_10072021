@@ -1,16 +1,18 @@
 import styles from "./EmployeesTable.module.scss";
 
 import React, { useEffect, useState } from "react";
+import Sort from "../Sort/Sort";
 
 const EmployeesTable = ({ filter }) => {
   const [title, setTitle] = useState(true);
   const [usersData, setUsersData] = useState([]);
+  const [sortsData, setSortsData] = useState([]);
+  const data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
 
   /**
    * localStorage data
    */
   useEffect(() => {
-    let data = JSON.parse(localStorage.getItem("dataEmployee"));
     const copyData = [...data];
     const newAray = [];
 
@@ -18,9 +20,15 @@ const EmployeesTable = ({ filter }) => {
       newAray.push({
         firstName: u.firstName,
         lastName: u.lastName,
-        startDate: new Date(u.startDate).toLocaleDateString(),
+        startDate:
+          u.startDate === ""
+            ? "Pas de date"
+            : new Date(u.startDate).toLocaleDateString(),
         department: u.department,
-        dateOfBirth: new Date(u.dateOfBirth).toLocaleDateString(),
+        dateOfBirth:
+          u.dateOfBirth === ""
+            ? "Pas de date"
+            : new Date(u.dateOfBirth).toLocaleDateString(),
         street: u.street,
         city: u.city,
         state: u.state,
@@ -51,14 +59,30 @@ const EmployeesTable = ({ filter }) => {
     );
   };
 
+  if (data.length === 0) {
+    return <div>No data available in table</div>;
+  }
+
+  const sortTh = (e) => {
+    // console.log("object", e);
+  };
   return (
     <table className="responsiveTable ">
       {/* <!-- Responsive Table Header Section --> */}
       <thead className="responsiveTable__head">
         <tr className="responsiveTable__row">
           {tableHead.map((headCell) => (
-            <th key={headCell.id} className="responsiveTable__head__title mr-5">
+            <th
+              key={headCell.id}
+              className="responsiveTable__head__title mr-5"
+              // onClick={(e) => sortTh(e)}
+            >
               {headCell.label}
+              <Sort
+                data={data}
+                setUsersData={setUsersData}
+                headCell={headCell}
+              />
             </th>
           ))}
         </tr>
@@ -66,23 +90,31 @@ const EmployeesTable = ({ filter }) => {
 
       {/* <!-- Responsive Table Body Section --> */}
       <tbody className="responsiveTable__body">
-        {filterData(usersData).map((u, i) => (
-          <tr key={i} className="responsiveTable__row">
-            {/* {console.log(Object.values(u))} */}
+        {filterData(usersData).length > 0 ? (
+          filterData(usersData).map((u, i) => (
+            <tr key={i} className="responsiveTable__row">
+              {/* {console.log(Object.values(u))} */}
 
-            {title &&
-              Object.values(u).map((v, i) => (
-                <React.Fragment key={i}>
-                  <td
-                    className="responsiveTable__body__text responsiveTable__body__text--firstName "
-                    data-title={tableHead[i].label}
-                  >
-                    <span>{v}</span>
-                  </td>
-                </React.Fragment>
-              ))}
+              {title &&
+                Object.values(u).map((v, i) => (
+                  <React.Fragment key={i}>
+                    <td
+                      className="responsiveTable__body__text responsiveTable__body__text--firstName "
+                      data-title={tableHead[i].label}
+                    >
+                      <span>{v}</span>
+                    </td>
+                  </React.Fragment>
+                ))}
+            </tr>
+          ))
+        ) : (
+          <tr className="">
+            <td className="responsiveTable__body__text">
+              No results found for {filter}
+            </td>
           </tr>
-        ))}
+        )}
       </tbody>
     </table>
   );

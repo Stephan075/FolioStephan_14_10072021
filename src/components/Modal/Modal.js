@@ -1,12 +1,24 @@
-import React from "react";
+import styles from "./Modal.module.scss";
+import validateImg from "./img/undraw_superhero_kguv.svg";
 
-const Modal = ({ children, titleTxt, setIsOpen }) => {
+const Modal = ({ currentData = "", setIsOpen }) => {
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div className="modal">
-      <div className="container">
-        <h3>{titleTxt}</h3>
-        {children}
-        <span className="close" onClick={() => setIsOpen(false)}>
+    <div className={`${styles.modal}`}>
+      <div className={`${styles.modalContent} `}>
+        <div className={`${styles.modalImg} `}>
+          <img src={validateImg} alt="validateImg" />
+        </div>
+
+        <div className={`${styles.text}`}>
+          The employer <span>{`${currentData && currentData.firstName}`}</span>{" "}
+          was created! Thank you 😀
+        </div>
+
+        <span className={`${styles.modalBtn} `} onClick={closeModal}>
           &#10006;
         </span>
       </div>

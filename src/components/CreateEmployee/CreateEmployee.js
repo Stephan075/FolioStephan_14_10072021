@@ -1,21 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Fields from "./Fields";
-import Modal from "../Modal/Modal";
+import { Modal } from "opcmodal";
 
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dataAfterRegister, setData] = useState(false);
 
-  const openModal = (values) => {
-    const data = values;
-
-    console.log("data", data);
-    setIsOpen(true);
-  };
+  function toggle() {
+    setIsOpen(!isOpen);
+  }
 
   const closeModal = () => {
     setIsOpen(false);
@@ -56,12 +52,10 @@ const CreateEmployee = () => {
   let data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
 
   const submit = (values) => {
-    console.log(values);
     data.push(values);
     localStorage.setItem("dataEmployee", JSON.stringify(data));
-    // console.log(values);
-    openModal(values);
-    // reset(defaultValues);
+    toggle();
+    reset(defaultValues);
   };
 
   return (
@@ -81,13 +75,7 @@ const CreateEmployee = () => {
         </div>
       </form>
 
-      {isOpen && (
-        <Modal
-          titleTxt="Employee Created !"
-          setIsOpen={setIsOpen}
-          closeModal={closeModal}
-        />
-      )}
+      {isOpen && <Modal closeModal={closeModal} />}
     </>
   );
 };
