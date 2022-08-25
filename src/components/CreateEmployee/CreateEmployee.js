@@ -9,13 +9,12 @@ import { Modal } from "opcmodal";
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  function toggle() {
-    setIsOpen(!isOpen);
-  }
-
   const closeModal = () => {
     setIsOpen(false);
   };
+  function toggle() {
+    setIsOpen(!isOpen);
+  }
 
   const yupSchema = yup.object({
     firstName: yup.string().required(`The Firstname field is mandatory`),

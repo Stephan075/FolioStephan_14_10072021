@@ -12,7 +12,7 @@ const SearchInput = ({ filter, setFilter }) => {
     <input
       className="search-table"
       placeholder="Search ..."
-      value={filter}
+      value={filter || ""}
       onInput={handleInput}
     />
   );

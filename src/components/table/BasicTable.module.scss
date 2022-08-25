@@ -1,0 +1,15 @@
+.topGroup {
+  display: flex;
+  flex-wrap: wrap;
+  select {
+    // margin: 1rem;
+    width: 100%;
+  }
+}
+
+.footerGroups {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
