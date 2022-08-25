@@ -1,6 +1,10 @@
 import styles from "./Header.module.scss";
 import { Link, useLocation } from "react-router-dom";
 
+/**
+ * @description component that displays the Header
+ * @returns { HTMLElement }
+ */
 const Header = () => {
   const location = useLocation();
   return (

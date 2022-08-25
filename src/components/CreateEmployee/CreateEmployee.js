@@ -6,16 +6,30 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Fields from "./Fields";
 import { Modal } from "opcmodal";
 
+/**
+ * @description Component that show the create employee form
+ * @returns { HTMLElement }
+ */
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  /**
+   * @description Function to open the modal
+   */
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  /**
+   * @description Function to close the modal
+   */
   const closeModal = () => {
     setIsOpen(false);
   };
-  function toggle() {
-    setIsOpen(!isOpen);
-  }
 
+  /**
+   * @description Validation of forms
+   */
   const yupSchema = yup.object({
     firstName: yup.string().required(`The Firstname field is mandatory`),
 
@@ -41,7 +55,7 @@ const CreateEmployee = () => {
     control,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitted },
+    formState: { errors },
   } = useForm({
     defaultValues,
     resolver: yupResolver(yupSchema),
@@ -50,10 +64,13 @@ const CreateEmployee = () => {
 
   let data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
 
+  /**
+   * @description Function that save the created employee
+   */
   const submit = (values) => {
     data.push(values);
     localStorage.setItem("dataEmployee", JSON.stringify(data));
-    toggle();
+    openModal();
     reset(defaultValues);
   };
 

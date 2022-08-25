@@ -1,5 +1,9 @@
 import styles from "./Footer.module.scss";
 
+/**
+ * @description component that displays the footer
+ * @returns { HTMLElement }
+ */
 const Footer = () => {
   return (
     <footer

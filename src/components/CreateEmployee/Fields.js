@@ -1,4 +1,7 @@
+// eslint-disable-next-line
 import styles from "./CreateEmployee.module.scss";
+import PropTypes from "prop-types";
+
 import React from "react";
 import FormInput from "../Form/FormInput/FormInput";
 import DatePicker from "react-datepicker";
@@ -6,6 +9,11 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { Controller } from "react-hook-form";
 import FormSelect from "../Form/FormSelect/FormSelect";
+
+/**
+ * @description component that groups the forms
+ * @returns { HTMLElement }
+ */
 
 const Fields = ({
   register,
@@ -122,6 +130,15 @@ const Fields = ({
       />
     </>
   );
+};
+
+Fields.propTypes = {
+  register: PropTypes.func,
+  errors: PropTypes.object,
+  control: PropTypes.object,
+  states: PropTypes.array,
+  departments: PropTypes.array,
+  defaultValues: PropTypes.object,
 };
 
 export default Fields;

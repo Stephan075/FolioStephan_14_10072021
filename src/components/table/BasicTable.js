@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./BasicTable.module.scss";
+import PropTypes from "prop-types";
 
 import {
   useTable,
@@ -7,22 +8,29 @@ import {
   useGlobalFilter,
   usePagination,
 } from "react-table";
-import MOCK_DATA from "./MOCK_DATA.json";
+// import MOCK_DATA from "./MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import SearchInput from "../Form/SearchInput/SearchInput";
 
-// Instance de table
+/**
+ * @description Component that show a table of employees
+ * @returns { HTMLElement }
+ */
 const BasicTable = ({ usersData }) => {
+  // Get the data of employees
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => usersData, [usersData]);
+  const data = useMemo(() => [...usersData], [usersData]);
 
   const tableInstance = useTable(
     {
       columns: columns,
       data: data,
     },
+    //  Search input
     useGlobalFilter,
+    // Sort with columns
     useSortBy,
+    // Pagination
     usePagination
   );
 
@@ -30,7 +38,6 @@ const BasicTable = ({ usersData }) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     state,
     setGlobalFilter,
@@ -39,7 +46,6 @@ const BasicTable = ({ usersData }) => {
     nextPage,
     canNextPage,
     canPreviousPage,
-    pageOptions,
     setPageSize,
   } = tableInstance;
 
@@ -115,7 +121,7 @@ const BasicTable = ({ usersData }) => {
             })) || (
             <tr className="">
               <td className="responsiveTable__body__text">
-                No results found for
+                No data available in table
               </td>
             </tr>
           )}
@@ -155,6 +161,10 @@ const BasicTable = ({ usersData }) => {
       </div>
     </>
   );
+};
+
+BasicTable.propTypes = {
+  usersData: PropTypes.array,
 };
 
 export default BasicTable;

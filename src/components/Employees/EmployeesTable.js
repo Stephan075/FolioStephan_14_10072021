@@ -1,16 +1,14 @@
-import styles from "./EmployeesTable.module.scss";
-
 import React, { useEffect, useState } from "react";
-import { useTable } from "react-table";
 
 import BasicTable from "../table/BasicTable";
 
+/**
+ * @description Component that show a table of employees
+ * @returns { HTMLElement }
+ */
 const EmployeesTable = () => {
   const [usersData, setUsersData] = useState([]);
 
-  /**
-   * localStorage data
-   */
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
     const copyData = [...data];

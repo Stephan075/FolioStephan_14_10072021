@@ -1,5 +1,9 @@
-import styles from "./FormInput.module.scss";
+import PropTypes from "prop-types";
 
+/**
+ * @description Component that creates input fields
+ * @returns { HTMLElement }
+ */
 const FormInput = ({
   register,
   id,
@@ -22,6 +26,14 @@ const FormInput = ({
       {errors && <p>{errors.message}</p>}
     </div>
   );
+};
+
+FormInput.propTypes = {
+  register: PropTypes.func,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  errors: PropTypes.object,
 };
 
 export default FormInput;

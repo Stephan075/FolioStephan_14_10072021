@@ -1,7 +1,9 @@
-import { useState } from "react";
-import styles from "./SearchInput.module.scss";
-import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
+/**
+ * @description Component that show a input search for the employees table
+ * @returns { HTMLElement }
+ */
 const SearchInput = ({ filter, setFilter }) => {
   const handleInput = (e) => {
     const filter = e.target.value;
@@ -16,6 +18,11 @@ const SearchInput = ({ filter, setFilter }) => {
       onInput={handleInput}
     />
   );
+};
+
+SearchInput.propTypes = {
+  filter: PropTypes.string,
+  setFilter: PropTypes.func,
 };
 
 export default SearchInput;

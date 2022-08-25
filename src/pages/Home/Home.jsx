@@ -1,7 +1,10 @@
 import React from "react";
-import styles from "./Home.module.scss";
 import CreateEmployee from "../../components/CreateEmployee/CreateEmployee";
 
+/**
+ * @description Component that displays the employee creation page
+ * @returns { HTMLElement }
+ */
 const Home = () => {
   return (
     <div className={`blockContainer d-flex flex-column`}>
