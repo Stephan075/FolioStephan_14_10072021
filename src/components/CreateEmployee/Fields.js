@@ -61,6 +61,7 @@ const Fields = ({
               />
             )}
           />
+          {errors && <p>{errors.dateOfBirth?.message}</p>}
         </div>
 
         <div className="d-flex flex-column mb-20">
@@ -78,6 +79,7 @@ const Fields = ({
               />
             )}
           />
+          {errors && <p>{errors.startDate?.message}</p>}
         </div>
       </fieldset>
 

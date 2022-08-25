@@ -22,7 +22,7 @@ const FormSelect = ({ register, id, label, options, value, errors }) => {
           );
         })}
       </select>
-      {errors?.id && <p>{errors.id.message}</p>}
+      {errors[id] && <p>{errors[id].message}</p>}
     </div>
   );
 };

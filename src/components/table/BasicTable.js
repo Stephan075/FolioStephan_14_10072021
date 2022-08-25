@@ -111,7 +111,6 @@ const BasicTable = ({ usersData }) => {
                         className="responsiveTable__body__text responsiveTable__body__text--firstName "
                         data-title={cell.render("Header")}
                       >
-                        {console.log("cell", cell)}
                         {cell.render("Cell")}
                       </td>
                     );

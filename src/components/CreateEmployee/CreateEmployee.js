@@ -35,7 +35,23 @@ const CreateEmployee = () => {
 
     lastName: yup.string().required("The LastName field is mandatory"),
 
-    zipCode: yup.number().typeError("Please enter a number"),
+    dateOfBirth: yup
+      .date()
+      .required()
+      .typeError("please enter a valid date")
+      .required(),
+
+    startDate: yup
+      .date()
+      .required()
+      .typeError("please enter a valid date")
+      .required(),
+
+    street: yup.string().typeError("Please enter a street").required(),
+    city: yup.string().typeError("Please enter a city").required(),
+    state: yup.string().typeError("Please enter a state").required(),
+    zipCode: yup.number().typeError("Please enter a number").required(),
+    department: yup.string().typeError("Please enter a department").required(),
   });
 
   const defaultValues = {
