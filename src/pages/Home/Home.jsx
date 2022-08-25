@@ -1,5 +1,6 @@
 import React from "react";
 import CreateEmployee from "../../components/CreateEmployee/CreateEmployee";
+import styles from "./Home.module.scss";
 
 /**
  * @description Component that displays the employee creation page
@@ -11,7 +12,7 @@ const Home = () => {
       <div className="flex-fill container">
         <h1 className="heading-2 my-30">Create Employee</h1>
 
-        <div className="homeForm">
+        <div className={styles.homeForm}>
           <CreateEmployee />
         </div>
       </div>
