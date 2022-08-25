@@ -1,6 +1,6 @@
 # HRnet
 
-![HRnet](src/images/HRnet_Logo.jpg)
+![HRnet](public/HRnet_Logo.jpg)
 
 ## Installation
 
