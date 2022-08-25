@@ -2,6 +2,10 @@
 
 ![HRnet](public/HRnet_Logo.jpg)
 
+This company uses an internal web application, called **HRnet**, that manages employee records. The application is old and uses jQuery on the front end, which leads to considerable bugs and increased internal complaints.
+
+**My mission** : To upgrade this jQuery application to react
+
 ## Installation
 
 `Clone project`
