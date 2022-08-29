@@ -36,17 +36,17 @@ const CreateEmployee = () => {
    * @description Validation of forms
    */
   const yupSchema = yup.object({
-    firstName: yup.string().required(`The Firstname field is mandatory`),
+    first_name: yup.string().required(`The Firstname field is mandatory`),
 
-    lastName: yup.string().required("The LastName field is mandatory"),
+    last_name: yup.string().required("The LastName field is mandatory"),
 
-    dateOfBirth: yup
+    date_Of_Birth: yup
       .date()
       .required()
       .typeError("please enter a valid date")
       .required(),
 
-    startDate: yup
+    start_date: yup
       .date()
       .required()
       .typeError("please enter a valid date")
@@ -55,7 +55,7 @@ const CreateEmployee = () => {
     street: yup.string().typeError("Please enter a street").required(),
     city: yup.string().typeError("Please enter a city").required(),
     state: yup.string().typeError("Please enter a state").required(),
-    zipCode: yup.number().typeError("Please enter a number").required(),
+    zip_code: yup.number().typeError("Please enter a number").required(),
     department: yup.string().typeError("Please enter a department").required(),
   });
 
