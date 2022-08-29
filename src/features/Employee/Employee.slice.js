@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const STATUSES = Object.freeze({
   IDLE: "idle",
@@ -17,11 +17,12 @@ const EmployeeSlice = createSlice({
   reducers: {
     add: (state, action) => {
       state.employee.push({ ...action.payload });
+      console.log("state", current(state));
     },
   },
 });
 
-export const employeeSelector = (state) => state.employee;
+export const employeeSelector = (state) => state.employee.employee;
 
 export const { add } = EmployeeSlice.actions;
 

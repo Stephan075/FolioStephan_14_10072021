@@ -5,6 +5,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Fields from "./Fields";
 import { Modal } from "opcmodal";
+import { useDispatch } from "react-redux";
+import { add } from "../../features/Employee/Employee.slice";
+import { departments, states } from "../../_mocks_/data";
 
 /**
  * @description Component that show the create employee form
@@ -12,6 +15,8 @@ import { Modal } from "opcmodal";
  */
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   /**
    * @description Function to open the modal
@@ -55,14 +60,14 @@ const CreateEmployee = () => {
   });
 
   const defaultValues = {
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    startDate: "",
+    first_name: "",
+    last_name: "",
+    date_Of_Birth: "",
+    start_date: "",
     street: "",
     city: "",
     state: "",
-    zipCode: "",
+    zip_code: "",
     department: "",
   };
 
@@ -78,14 +83,24 @@ const CreateEmployee = () => {
     mode: "onSubmit",
   });
 
-  let data = JSON.parse(localStorage.getItem("dataEmployee")) || [];
-
   /**
    * @description Function that save the created employee
    */
   const submit = (values) => {
-    data.push(values);
-    localStorage.setItem("dataEmployee", JSON.stringify(data));
+    // format date
+    const dataForm = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      start_date: values.start_date.toISOString(),
+      department: values.department,
+      date_Of_Birth: values.date_Of_Birth.toISOString(),
+      street: values.street,
+      city: values.city,
+      state: values.state,
+      zip_code: values.zip_code,
+    };
+
+    dispatch(add(dataForm));
     openModal();
     reset(defaultValues);
   };
@@ -113,260 +128,3 @@ const CreateEmployee = () => {
 };
 
 export default CreateEmployee;
-
-const states = [
-  {
-    option: "Alabama",
-    abbreviation: "AL",
-  },
-  {
-    option: "Alaska",
-    abbreviation: "AK",
-  },
-  {
-    option: "American Samoa",
-    abbreviation: "AS",
-  },
-  {
-    option: "Arizona",
-    abbreviation: "AZ",
-  },
-  {
-    option: "Arkansas",
-    abbreviation: "AR",
-  },
-  {
-    option: "California",
-    abbreviation: "CA",
-  },
-  {
-    option: "Colorado",
-    abbreviation: "CO",
-  },
-  {
-    option: "Connecticut",
-    abbreviation: "CT",
-  },
-  {
-    option: "Delaware",
-    abbreviation: "DE",
-  },
-  {
-    option: "District Of Columbia",
-    abbreviation: "DC",
-  },
-  {
-    option: "Federated States Of Micronesia",
-    abbreviation: "FM",
-  },
-  {
-    option: "Florida",
-    abbreviation: "FL",
-  },
-  {
-    option: "Georgia",
-    abbreviation: "GA",
-  },
-  {
-    option: "Guam",
-    abbreviation: "GU",
-  },
-  {
-    option: "Hawaii",
-    abbreviation: "HI",
-  },
-  {
-    option: "Idaho",
-    abbreviation: "ID",
-  },
-  {
-    option: "Illinois",
-    abbreviation: "IL",
-  },
-  {
-    option: "Indiana",
-    abbreviation: "IN",
-  },
-  {
-    option: "Iowa",
-    abbreviation: "IA",
-  },
-  {
-    option: "Kansas",
-    abbreviation: "KS",
-  },
-  {
-    option: "Kentucky",
-    abbreviation: "KY",
-  },
-  {
-    option: "Louisiana",
-    abbreviation: "LA",
-  },
-  {
-    option: "Maine",
-    abbreviation: "ME",
-  },
-  {
-    option: "Marshall Islands",
-    abbreviation: "MH",
-  },
-  {
-    option: "Maryland",
-    abbreviation: "MD",
-  },
-  {
-    option: "Massachusetts",
-    abbreviation: "MA",
-  },
-  {
-    option: "Michigan",
-    abbreviation: "MI",
-  },
-  {
-    option: "Minnesota",
-    abbreviation: "MN",
-  },
-  {
-    option: "Mississippi",
-    abbreviation: "MS",
-  },
-  {
-    option: "Missouri",
-    abbreviation: "MO",
-  },
-  {
-    option: "Montana",
-    abbreviation: "MT",
-  },
-  {
-    option: "Nebraska",
-    abbreviation: "NE",
-  },
-  {
-    option: "Nevada",
-    abbreviation: "NV",
-  },
-  {
-    option: "New Hampshire",
-    abbreviation: "NH",
-  },
-  {
-    option: "New Jersey",
-    abbreviation: "NJ",
-  },
-  {
-    option: "New Mexico",
-    abbreviation: "NM",
-  },
-  {
-    option: "New York",
-    abbreviation: "NY",
-  },
-  {
-    option: "North Carolina",
-    abbreviation: "NC",
-  },
-  {
-    option: "North Dakota",
-    abbreviation: "ND",
-  },
-  {
-    option: "Northern Mariana Islands",
-    abbreviation: "MP",
-  },
-  {
-    option: "Ohio",
-    abbreviation: "OH",
-  },
-  {
-    option: "Oklahoma",
-    abbreviation: "OK",
-  },
-  {
-    option: "Oregon",
-    abbreviation: "OR",
-  },
-  {
-    option: "Palau",
-    abbreviation: "PW",
-  },
-  {
-    option: "Pennsylvania",
-    abbreviation: "PA",
-  },
-  {
-    option: "Puerto Rico",
-    abbreviation: "PR",
-  },
-  {
-    option: "Rhode Island",
-    abbreviation: "RI",
-  },
-  {
-    option: "South Carolina",
-    abbreviation: "SC",
-  },
-  {
-    option: "South Dakota",
-    abbreviation: "SD",
-  },
-  {
-    option: "Tennessee",
-    abbreviation: "TN",
-  },
-  {
-    option: "Texas",
-    abbreviation: "TX",
-  },
-  {
-    option: "Utah",
-    abbreviation: "UT",
-  },
-  {
-    option: "Vermont",
-    abbreviation: "VT",
-  },
-  {
-    option: "Virgin Islands",
-    abbreviation: "VI",
-  },
-  {
-    option: "Virginia",
-    abbreviation: "VA",
-  },
-  {
-    option: "Washington",
-    abbreviation: "WA",
-  },
-  {
-    option: "West Virginia",
-    abbreviation: "WV",
-  },
-  {
-    option: "Wisconsin",
-    abbreviation: "WI",
-  },
-  {
-    option: "Wyoming",
-    abbreviation: "WY",
-  },
-];
-
-export const departments = [
-  {
-    option: "Sales",
-  },
-  {
-    option: "Marketing",
-  },
-  {
-    option: "Engineering",
-  },
-  {
-    option: "Human Resources",
-  },
-  {
-    option: "Legal",
-  },
-];

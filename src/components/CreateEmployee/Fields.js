@@ -30,7 +30,7 @@ const Fields = ({
 
         <FormInput
           register={register}
-          id="lastName"
+          id="last_name"
           label="Last Name"
           type="text"
           placeholder="Last Name"
@@ -39,7 +39,7 @@ const Fields = ({
 
         <FormInput
           register={register}
-          id="firstName"
+          id="first_name"
           label="First Name"
           type="text"
           placeholder="First Name"
@@ -50,10 +50,10 @@ const Fields = ({
           {/* <label htmlFor="dateOfBirth">Date of Birth</label> */}
           <Controller
             control={control}
-            name="dateOfBirth"
+            name="date_Of_Birth"
             render={({ field }) => (
               <DatePicker
-                id="dateOfBirth"
+                id="date_Of_Birth"
                 dateFormat="dd/MM/yyyy"
                 placeholderText="Date of Birth"
                 onChange={(date) => field.onChange(date)}
@@ -68,10 +68,10 @@ const Fields = ({
           {/* <label htmlFor="startDate">Date of Birth</label> */}
           <Controller
             control={control}
-            name="startDate"
+            name="start_date"
             render={({ field }) => (
               <DatePicker
-                id="startDate"
+                id="start_date"
                 dateFormat="dd/MM/yyyy"
                 placeholderText="Start Date"
                 onChange={(date) => field.onChange(date)}
@@ -113,7 +113,7 @@ const Fields = ({
 
         <FormInput
           register={register}
-          id="zipCode"
+          id="zip_code"
           label="Zip code"
           type="number"
           placeholder="Zip code"
