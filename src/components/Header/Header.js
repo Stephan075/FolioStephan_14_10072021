@@ -13,20 +13,20 @@ const Header = () => {
   align-items-center`}
     >
       <div className="flex-fill">
-        <Link className="" to="/">
+        <Link className="" to="./">
           <div className={`${styles.logo}`}>HRnet</div>
         </Link>
       </div>
       <ul>
-        {location.pathname === "/employeeList" ? (
-          <Link to="/" className="link">
+        {location.pathname === "/FolioStephan_14_10072021/employeeList" ? (
+          <Link to="./" className="link">
             <button className="btn btn-primary">
               <i className="fa-solid fa-users mr-5"></i>
               <span>Home</span>
             </button>
           </Link>
         ) : (
-          <Link to="employeeList" className="link">
+          <Link to="./employeeList" className="link">
             <button className="btn btn-primary">
               <i className="fa-solid fa-users mr-5"></i>
               <span>View Current Employees</span>

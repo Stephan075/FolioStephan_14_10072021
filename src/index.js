@@ -4,14 +4,18 @@ import "./assets/styles/index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<App />} />
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/FolioStephan_14_10072021/*" element={<App />} />
+        </Routes>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
