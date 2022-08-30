@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/FolioStephan_14_10072021/static/css/main.7f50c775.css",
-    "main.js": "/FolioStephan_14_10072021/static/js/main.d3e11cf4.js",
+    "main.js": "/FolioStephan_14_10072021/static/js/main.5d55b4df.js",
     "static/media/undraw_superhero_kguv.svg": "/FolioStephan_14_10072021/static/media/undraw_superhero_kguv.475cac14339580db750c9942882a3ca5.svg",
     "index.html": "/FolioStephan_14_10072021/index.html",
     "main.7f50c775.css.map": "/FolioStephan_14_10072021/static/css/main.7f50c775.css.map",
-    "main.d3e11cf4.js.map": "/FolioStephan_14_10072021/static/js/main.d3e11cf4.js.map"
+    "main.5d55b4df.js.map": "/FolioStephan_14_10072021/static/js/main.5d55b4df.js.map"
   },
   "entrypoints": [
     "static/css/main.7f50c775.css",
-    "static/js/main.d3e11cf4.js"
+    "static/js/main.5d55b4df.js"
   ]
 }
