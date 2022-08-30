@@ -11,9 +11,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <Routes>
-          <Route path="/FolioStephan_14_10072021/*" element={<App />} />
-        </Routes>
+        {/* <Routes> */}
+        {/* <Route path="/FolioStephan_14_10072021/*" element={<App />} /> */}
+        <App />
+        {/* </Routes> */}
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

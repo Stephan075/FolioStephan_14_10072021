@@ -18,7 +18,7 @@ const Header = () => {
         </Link>
       </div>
       <ul>
-        {location.pathname === "/FolioStephan_14_10072021/employeeList" ? (
+        {location.pathname === "/employeeList" ? (
           <Link to="./" className="link">
             <button className="btn btn-primary">
               <i className="fa-solid fa-users mr-5"></i>
