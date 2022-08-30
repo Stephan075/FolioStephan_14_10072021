@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/FolioStephan_14_10072021/static/css/main.5c009883.css",
-    "main.js": "/FolioStephan_14_10072021/static/js/main.82c26d16.js",
+    "main.css": "/FolioStephan_14_10072021/static/css/main.1c52729c.css",
+    "main.js": "/FolioStephan_14_10072021/static/js/main.8f55e993.js",
     "static/js/787.a603b31f.chunk.js": "/FolioStephan_14_10072021/static/js/787.a603b31f.chunk.js",
     "static/media/undraw_superhero_kguv.svg": "/FolioStephan_14_10072021/static/media/undraw_superhero_kguv.475cac14339580db750c9942882a3ca5.svg",
     "index.html": "/FolioStephan_14_10072021/index.html",
-    "main.5c009883.css.map": "/FolioStephan_14_10072021/static/css/main.5c009883.css.map",
-    "main.82c26d16.js.map": "/FolioStephan_14_10072021/static/js/main.82c26d16.js.map",
+    "main.1c52729c.css.map": "/FolioStephan_14_10072021/static/css/main.1c52729c.css.map",
+    "main.8f55e993.js.map": "/FolioStephan_14_10072021/static/js/main.8f55e993.js.map",
     "787.a603b31f.chunk.js.map": "/FolioStephan_14_10072021/static/js/787.a603b31f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c009883.css",
-    "static/js/main.82c26d16.js"
+    "static/css/main.1c52729c.css",
+    "static/js/main.8f55e993.js"
   ]
 }
