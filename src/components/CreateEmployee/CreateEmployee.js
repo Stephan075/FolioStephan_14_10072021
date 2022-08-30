@@ -8,6 +8,7 @@ import { Modal } from "opcmodal";
 import { useDispatch } from "react-redux";
 import { add } from "../../features/Employee/Employee.slice";
 import { departments, states } from "../../_mocks_/data";
+import moment from "moment";
 
 /**
  * @description Component that show the create employee form
@@ -15,6 +16,7 @@ import { departments, states } from "../../_mocks_/data";
  */
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(moment());
 
   const dispatch = useDispatch();
 
@@ -42,28 +44,41 @@ const CreateEmployee = () => {
 
     date_Of_Birth: yup
       .date()
-      .required()
       .typeError("please enter a valid date")
-      .required(),
+      .required("The LastName field is mandatory"),
 
     start_date: yup
       .date()
-      .required()
       .typeError("please enter a valid date")
-      .required(),
+      .required("The LastName field is mandatory"),
 
-    street: yup.string().typeError("Please enter a street").required(),
-    city: yup.string().typeError("Please enter a city").required(),
-    state: yup.string().typeError("Please enter a state").required(),
-    zip_code: yup.number().typeError("Please enter a number").required(),
-    department: yup.string().typeError("Please enter a department").required(),
+    street: yup
+      .string()
+      .typeError("Please enter a street")
+      .required("The Street field is mandatory"),
+    city: yup
+      .string()
+      .typeError("Please enter a city")
+      .required("The City field is mandatory"),
+    state: yup
+      .string()
+      .typeError("Please enter a state")
+      .required("The State field is mandatory"),
+    zip_code: yup
+      .number()
+      .typeError("Please enter a number")
+      .required("The Zip code field is mandatory"),
+    department: yup
+      .string()
+      .typeError("Please enter a department")
+      .required("The department field is mandatory"),
   });
 
   const defaultValues = {
     first_name: "",
     last_name: "",
-    date_Of_Birth: "",
-    start_date: "",
+    date_Of_Birth: value,
+    start_date: value,
     street: "",
     city: "",
     state: "",

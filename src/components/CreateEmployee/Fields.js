@@ -1,15 +1,17 @@
 // eslint-disable-next-line
-import styles from "./CreateEmployee.module.scss";
+import "./CreateEmployee.module.scss";
 import PropTypes from "prop-types";
 
-import React from "react";
 import FormInput from "../Form/FormInput/FormInput";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { Controller } from "react-hook-form";
 import FormSelect from "../Form/FormSelect/FormSelect";
 
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import TextField from "@mui/material/TextField";
 /**
  * @description component that groups the forms
  * @returns { HTMLElement }
@@ -34,7 +36,7 @@ const Fields = ({
           label="Last Name"
           type="text"
           placeholder="Last Name"
-          errors={errors.lastName}
+          errors={errors.last_name}
         />
 
         <FormInput
@@ -43,7 +45,7 @@ const Fields = ({
           label="First Name"
           type="text"
           placeholder="First Name"
-          errors={errors.firstName}
+          errors={errors.first_name}
         />
 
         <div className="d-flex flex-column mb-20">
@@ -51,17 +53,24 @@ const Fields = ({
           <Controller
             control={control}
             name="date_Of_Birth"
+            type="number"
             render={({ field }) => (
-              <DatePicker
-                id="date_Of_Birth"
-                dateFormat="dd/MM/yyyy"
-                placeholderText="Date of Birth"
-                onChange={(date) => field.onChange(date)}
-                selected={field.value}
-              />
+              <LocalizationProvider dateAdapter={AdapterMoment}>
+                <DatePicker
+                  id="date_Of_Birth"
+                  label="Date of Birth"
+                  value={field.value}
+                  onChange={(date) => field.onChange(date)}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
             )}
           />
-          {errors && <p>{errors.dateOfBirth?.message}</p>}
+          {errors && (
+            <div role="alert" className="text-danger">
+              {errors.date_Of_Birth?.message}
+            </div>
+          )}
         </div>
 
         <div className="d-flex flex-column mb-20">
@@ -70,16 +79,23 @@ const Fields = ({
             control={control}
             name="start_date"
             render={({ field }) => (
-              <DatePicker
-                id="start_date"
-                dateFormat="dd/MM/yyyy"
-                placeholderText="Start Date"
-                onChange={(date) => field.onChange(date)}
-                selected={field.value}
-              />
+              <LocalizationProvider dateAdapter={AdapterMoment}>
+                <DatePicker
+                  id="start_date"
+                  label="Start Date"
+                  value={field.value}
+                  onChange={(date) => field.onChange(date)}
+                  pl
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
             )}
           />
-          {errors && <p>{errors.startDate?.message}</p>}
+          {errors && (
+            <div role="alert" className="text-danger">
+              {errors.start_date?.message}
+            </div>
+          )}
         </div>
       </fieldset>
 
@@ -117,7 +133,7 @@ const Fields = ({
           label="Zip code"
           type="number"
           placeholder="Zip code"
-          errors={errors.zipCode}
+          errors={errors.zip_code}
           valueAsNumber={true}
         />
       </fieldset>

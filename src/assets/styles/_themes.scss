@@ -17,50 +17,6 @@
   border: 1px solid var(--primary);
 }
 
-// TYPO
-%heading {
-  font-weight: 400;
-}
-
-.heading-1 {
-  @extend %heading;
-  font-size: 4.5rem;
-  line-height: 1;
-}
-
-.heading-2 {
-  @extend %heading;
-  font-size: 4rem;
-  font-style: italic;
-  line-height: 1;
-
-  &--light {
-    color: var(--gray-2);
-  }
-  &--dark {
-    color: var(--gray-1);
-  }
-}
-
-.heading-3 {
-  @extend %heading;
-  font-size: 1.6rem;
-  color: var(--primary);
-  text-transform: uppercase;
-}
-
-.heading-4 {
-  @extend %heading;
-  font-size: 1.9rem;
-
-  &--light {
-    color: var(--gray-2);
-  }
-  &--dark {
-    color: var(--gray-1);
-  }
-}
-
 //table
 .responsiveTable {
   background: var(--primary);
@@ -146,8 +102,4 @@ td > span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.responsiveTable__body {
-}
-.responsiveTable__body__text {
 }

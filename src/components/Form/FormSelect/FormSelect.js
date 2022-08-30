@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
  * @description Component that creates selects
  * @returns { HTMLElement }
  */
-const FormSelect = ({ register, id, label, options, value, errors }) => {
+const FormSelect = ({ register, id, label, options, errors }) => {
   return (
     <div className="d-flex flex-column mb-20">
       <select {...register(id)} id={id}>
@@ -22,7 +22,11 @@ const FormSelect = ({ register, id, label, options, value, errors }) => {
           );
         })}
       </select>
-      {errors[id] && <p>{errors[id].message}</p>}
+      {errors[id] && (
+        <div role="alert" className="text-danger">
+          {errors[id].message}
+        </div>
+      )}
     </div>
   );
 };

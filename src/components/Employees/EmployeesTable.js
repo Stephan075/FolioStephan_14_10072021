@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { employeeSelector } from "../../features/Employee/Employee.slice";
 import { useSelector } from "react-redux";
 

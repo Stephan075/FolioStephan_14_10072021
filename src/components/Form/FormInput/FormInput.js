@@ -14,16 +14,18 @@ const FormInput = ({
 }) => {
   return (
     <div className="form-group d-flex flex-column mb-20">
-      {/* <label className="mb-5" htmlFor={id}>
-        {label}
-      </label> */}
       <input
         {...register(id, {})}
         id={id}
         type={type}
         placeholder={placeholder}
+        autoComplete="off"
       />
-      {errors && <p>{errors.message}</p>}
+      {errors && (
+        <div role="alert" className="text-danger">
+          {errors.message}
+        </div>
+      )}
     </div>
   );
 };

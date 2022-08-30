@@ -1,5 +1,9 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom"; //route
+
+// components
 import Layout from "./components/Layout";
+
+// pages
 import Home from "./pages/Home/Home";
 import EmployeeList from "./pages/EmployeeList/EmployeeList";
 
@@ -8,7 +12,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="/employeeList" element={<EmployeeList />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
