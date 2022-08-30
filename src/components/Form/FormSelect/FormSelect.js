@@ -31,8 +31,6 @@ const FormSelect = ({ register, id, label, options, errors }) => {
   );
 };
 
-// register, id, label, options, value, errors
-
 FormSelect.propTypes = {
   register: PropTypes.func,
   id: PropTypes.string,

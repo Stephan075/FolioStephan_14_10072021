@@ -8,7 +8,6 @@ import { Modal } from "opcmodal";
 import { useDispatch } from "react-redux";
 import { add } from "../../features/Employee/Employee.slice";
 import { departments, states } from "../../_mocks_/data";
-import moment from "moment";
 
 /**
  * @description Component that show the create employee form
@@ -16,7 +15,7 @@ import moment from "moment";
  */
 const CreateEmployee = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(moment());
+  const [value] = useState(new Date());
 
   const dispatch = useDispatch();
 

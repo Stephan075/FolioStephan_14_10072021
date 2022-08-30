@@ -1,11 +1,4 @@
-.topGroup {
-  display: flex;
-  flex-wrap: wrap;
-  select {
-    // margin: 1rem;
-    width: 100%;
-  }
-}
+@use "../../../assets/styles/mixins" as mixin;
 
 .footerGroups {
   display: flex;

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// status
 export const STATUSES = Object.freeze({
   IDLE: "idle",
   ERROR: "error",

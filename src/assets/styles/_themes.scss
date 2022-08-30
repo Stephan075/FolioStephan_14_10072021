@@ -33,15 +33,13 @@
     border-bottom: 1px solid var(--primary);
     padding: 0 1.5rem;
     border-bottom: 1px solid #edeef2;
-    // grid-template-columns: repeat(9, 1fr);
-    // grid-template-columns: 1fr 1fr 1fr 1.5fr 1.2fr 1.5fr 1fr 0.5fr 1fr;
+
     grid-template-columns: 1fr 1fr 1fr 1fr 1.3fr 1.2fr 1fr 0.5fr 1fr;
     @include mixin.md {
       grid-template-columns: 1fr 1fr 1fr;
     }
     @include mixin.sm-lt {
       grid-template-columns: auto;
-      // justify-content: center;
     }
     th,
     td {
@@ -66,7 +64,6 @@
   &__body {
     .responsiveTable__row {
       transition: 0.1s linear;
-      transition-property: color, background;
       &:last-child {
         border-bottom: none;
       }
@@ -102,4 +99,15 @@ td > span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+// search
+.search-table {
+  width: 75%;
+  @include mixin.lg-lt {
+    width: 75%;
+  }
+  @include mixin.xs {
+    width: 100%;
+  }
 }

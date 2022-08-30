@@ -15,7 +15,6 @@
     "@testing-library/user-event": "^13.5.0",
     "date-fns": "^2.29.2",
     "gh-pages": "^4.0.0",
-    "moment": "^2.29.4",
     "opcmodal": "^0.1.5",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",

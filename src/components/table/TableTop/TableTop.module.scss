@@ -1,0 +1,17 @@
+@use "../../../assets/styles/mixins" as mixin;
+
+.topGroup {
+  display: flex;
+  flex-wrap: nowrap;
+  @include mixin.xs {
+    flex-wrap: wrap;
+  }
+  select {
+    width: 24%;
+    margin-left: 1rem;
+    @include mixin.xs {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}
