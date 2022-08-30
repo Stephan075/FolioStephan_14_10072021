@@ -44,4 +44,4 @@ npm i
 npm start
 ```
 
-Open [http://localhost:3000/FolioStephan_14_10072021](http://localhost:3000/FolioStephan_14_10072021) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
