@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"; //route
+import { Routes, Route, Navigate } from "react-router-dom"; //route
 
 // components
 // import Layout from "./components/Layout";
@@ -15,6 +15,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/employeeList" element={<EmployeeList />} />
       </Routes>
       <Footer />

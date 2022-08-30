@@ -17,7 +17,7 @@ const Header = () => {
           <div className={`${styles.logo}`}>HRnet</div>
         </Link>
       </div>
-      <ul>
+      <div className="cta">
         {location.pathname === "/employeeList" ? (
           <Link to="./" className="link">
             <button className="btn btn-primary">
@@ -33,7 +33,7 @@ const Header = () => {
             </button>
           </Link>
         )}
-      </ul>
+      </div>
     </header>
   );
 };

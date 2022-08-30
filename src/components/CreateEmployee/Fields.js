@@ -62,6 +62,7 @@ const Fields = ({
                   value={field.value}
                   onChange={(date) => field.onChange(date)}
                   renderInput={(params) => <TextField {...params} />}
+                  disableFuture={true}
                 />
               </LocalizationProvider>
             )}
@@ -87,6 +88,7 @@ const Fields = ({
                   onChange={(date) => field.onChange(date)}
                   pl
                   renderInput={(params) => <TextField {...params} />}
+                  disableFuture={true}
                 />
               </LocalizationProvider>
             )}

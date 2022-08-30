@@ -13,7 +13,11 @@ const TableTop = ({ setGlobalFilter, setPageSize, state }) => {
     <div className={styles.topGroup}>
       <SearchInput filter={globalFilter} setFilter={setGlobalFilter} />
 
-      <select value={pageSize} onChange={(e) => setPageSize(e.target.value)}>
+      <select
+        className="styled-select"
+        value={pageSize}
+        onChange={(e) => setPageSize(e.target.value)}
+      >
         {[10, 25, 50, 100].map((pageSize) => (
           <option key={pageSize} value={pageSize}>
             Show {pageSize}

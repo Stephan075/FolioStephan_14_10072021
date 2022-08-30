@@ -1,3 +1,5 @@
+@use "./mixins" as mixin;
+
 .p-5 {
   padding: 5px;
 }
@@ -46,6 +48,9 @@
   margin-bottom: 30px;
   margin-top: 30px;
 }
+.p-015 {
+  padding: 0 15px;
+}
 
 .container {
   max-width: 1200px;
@@ -55,16 +60,4 @@
 
 .blockContainer {
   min-height: 89.2vh;
-}
-
-.text-danger {
-  color: red;
-  font-size: 1.6rem;
-}
-
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.2rem;
 }

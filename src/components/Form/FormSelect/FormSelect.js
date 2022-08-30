@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
  */
 const FormSelect = ({ register, id, label, options, errors }) => {
   return (
-    <div className="d-flex flex-column mb-20">
-      <select {...register(id)} id={id}>
+    <div className="d-flex flex-column mb-20 ">
+      <select {...register(id)} id={id} className="styled-select">
         <option value="" disabled>
           Choisissez un {label}
         </option>

@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
  * @description Component that show a input search for the employees table
  * @returns { HTMLElement }
  */
+
 const SearchInput = ({ filter, setFilter }) => {
   const handleInput = (e) => {
     const filter = e.target.value;
